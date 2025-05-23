@@ -13,11 +13,13 @@ export default function PlayGame({
       <div className="play-ground">
         <div className="human">
           <div
+            className="options"
             style={{
-              fontSize: 40,
+              fontSize: 30,
               display: "flex",
               justifyContent: "space-around",
               flexDirection: "column",
+              gap: 5,
             }}
           >
             <span onClick={() => humanInput(1)} style={{ cursor: "pointer" }}>
@@ -44,8 +46,9 @@ export default function PlayGame({
           </div>
 
           <div
+            className="options"
             style={{
-              fontSize: 40,
+              fontSize: 30,
               display: "flex",
               justifyContent: "space-around",
               flexDirection: "column",

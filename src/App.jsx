@@ -18,8 +18,14 @@ function App() {
   let HumanChoice;
   let randomBot;
 
+  function startAgain() {
+    setWinner("?");
+    sethumanScore(0);
+    setBotScore(0);
+    setBotIcon("🤖");
+    setHumanIcon("🙋‍♂️");
+  }
   function humanInput(val) {
-    console.log(val);
     const options = {
       1: "🗿",
       2: "📜",
@@ -28,27 +34,49 @@ function App() {
 
     HumanChoice = val;
     randomBot = Math.floor(Math.random() * (3 - 0) + 1);
-    console.log(botIcon);
-    console.log(setHumanIcon(options[val]), setBotIcon(options[randomBot]));
-    if (!val) {
+    // its setting the icons of the players
+    setHumanIcon(options[val]), setBotIcon(options[randomBot]);
+    // if human selected the option
+    console.log(val, randomBot);
+
+    if (val) {
       console.log(randomBot, HumanChoice);
+      // first three options setting the human winner
       if (randomBot == 1 && HumanChoice == 2) {
-        setHumanIcon(options[2]);
-        setBotIcon(options[1]);
+        setWinner(playerName);
+        sethumanScore(humanScore + 1);
+      } else if (randomBot == 2 && HumanChoice == 3) {
+        setWinner(playerName);
+        sethumanScore(humanScore + 1);
+      } else if (randomBot == 3 && HumanChoice == 1) {
+        setWinner(playerName);
+        sethumanScore(humanScore + 1);
+      }
+      // last three option will set the bot winner
+      else if (HumanChoice == 1 && randomBot == 2) {
+        setWinner(bot);
+        setBotScore(botScore + 1);
+      } else if (HumanChoice == 2 && randomBot == 3) {
+        setWinner(bot);
+        setBotScore(botScore + 1);
+      } else if (HumanChoice == 3 && randomBot == 1) {
+        setWinner(bot);
+        setBotScore(botScore + 1);
+      } else if (HumanChoice == randomBot) {
+        setWinner("Match draw 🤝");
       }
     }
   }
 
   return (
     <>
-      <div className="startPromt">
+      <div className="entry">
         <input
           type="text"
           placeholder="Player name"
           onChange={(e) => setPlayerName(e.target.value)}
         />
-        <button>Start</button>
-        {/* <button onClick={startGame}>Reset</button> */}
+        <button onClick={startAgain}> Reset</button>
       </div>
 
       <PlayGame
