@@ -1,0 +1,36 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.play-ground{
+  display: flex;
+  justify-content: space-around;
+
+}
+.human,.bot{
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+
+}
+.human > div, .bot> div{
+  margin: 00.3rem;
+}
+.human > div:nth-child(2), .bot>div:nth-child(1){
+  padding:2rem;
+  width: 300px;
+  background-color: palegoldenrod;
+}
+.icon{
+  font-size: xxx-large;
+
+
+}
+p{
+  font-size: 3rem;
+  font-weight: bold;
+  background-color: palegoldenrod;
+}
